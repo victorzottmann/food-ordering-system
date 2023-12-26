@@ -1,6 +1,6 @@
 import os
 
-restaurants = []
+restaurants = ["Pizza", "Sushi", "Bacon"]
 
 def display_menu():
     # os.system("cls") # on windows
@@ -27,7 +27,7 @@ def select_option():
                 register_restaurant()
                 break
             case 2:
-                # list_restaurant()
+                list_restaurants()
                 break
             case 3:
                 # activate_restaurant()
@@ -37,16 +37,25 @@ def select_option():
                 break
 
 def register_restaurant():
-    os.system("clear")
-    print("Register a new restaurant\n")
+    show_option_title("Register a new restaurant\n")
     name = input("Enter a name for the restaurant: ")
     restaurants.append(name)
     print(f"Restaurant successfully registered!\n")
-    input("Press any key to return to the main menu")
-    main()
+    return_to_menu()
   
-def list_restaurant():
-    pass
+def list_restaurants():
+    show_option_title("All restaurants registered:\n")
+    for item in restaurants:
+        print(f"- {item}", sep="\n") 
+    return_to_menu()       
+
+def show_option_title(title):
+    os.system("clear")
+    print(title)
+
+def return_to_menu():
+    input("\nPress any key to return to the main menu: ")
+    main()   
 
 def main():
     display_menu()
