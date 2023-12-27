@@ -57,6 +57,17 @@ def select_option():
 
 
 def register_restaurant():
+    """ 
+    This function is for registering a new restaurant 
+    
+    Inputs: 
+    - Name of the restaurant
+    - Category
+    
+    Output:
+    - Adds a new restaurant to the dictionary of restaurants 
+    """
+    
     show_option_title("Register a new restaurant")
     name = input("Enter a name for the restaurant: ")
     category = input("Enter the category of the restaurant: ")
@@ -71,8 +82,9 @@ def register_restaurant():
   
   
 def list_restaurants():
-    show_option_title("All restaurants registered")
+    """ This function lists all restaurants formatted as a table """
     
+    show_option_title("All restaurants registered")
     table_headers = f"{'Name'.ljust(20)} | {'Category'.ljust(20)} | Status"
     table_size = len(table_headers) + 5
     print(table_headers)
@@ -87,6 +99,8 @@ def list_restaurants():
 
 
 def toggle_active_restaurant():
+    """ This function is for toggling the active state of a restaurant """
+    
     show_option_title("Activate / Deactivate Restaurant")
     name_restaurant = input("Enter the name of the restaurant: ")
     found = False
@@ -106,6 +120,8 @@ def toggle_active_restaurant():
     
     
 def show_option_title(title):
+    """ This function displays a title respective to whichever menu option is selected """
+    
     os.system("clear")
     line = "*" * (len(title))
     print(line)
