@@ -18,6 +18,7 @@ restaurants = [
     }
 ]
 
+
 def display_menu():
     # os.system("cls") # on windows
     os.system("clear") # on mac / linux
@@ -32,8 +33,10 @@ def display_menu():
     print("3. Activate restaurant")
     print("4. Exit\n")
   
+  
 def exit_program():
     print("Bye!")
+  
   
 def select_option():
     while True:
@@ -52,8 +55,9 @@ def select_option():
                 exit_program()
                 break
 
+
 def register_restaurant():
-    show_option_title("Register a new restaurant\n")
+    show_option_title("Register a new restaurant")
     name = input("Enter a name for the restaurant: ")
     category = input("Enter the category of the restaurant: ")
     data = {
@@ -62,20 +66,28 @@ def register_restaurant():
         "active": False
     }
     restaurants.append(data)
-    print(f"Restaurant successfully registered!\n")
+    print(f"Restaurant successfully registered!")
     return_to_menu()
   
+  
 def list_restaurants():
-    show_option_title("All restaurants registered:\n")
+    show_option_title("All restaurants registered")
+    
+    table_headers = f"{'Name'.ljust(20)} | {'Category'.ljust(20)} | Status"
+    table_size = len(table_headers) + 5
+    print(table_headers)
+    print("-" * table_size)
     for restaurant in restaurants:
         name = restaurant["name"]
         category = restaurant["category"]
         active = "activated" if restaurant["active"] else "deactivated"
-        print(f"- {name} | {category} | {active}", sep="\n") 
+        
+        print(f"{name.ljust(20)} | {category.ljust(20)} | {active}", sep="\n") 
     return_to_menu()       
 
+
 def toggle_active_restaurant():
-    show_option_title("Activate / Deactivate Restaurant\n")
+    show_option_title("Activate / Deactivate Restaurant")
     name_restaurant = input("Enter the name of the restaurant: ")
     found = False
     for restaurant in restaurants:
@@ -95,15 +107,22 @@ def toggle_active_restaurant():
     
 def show_option_title(title):
     os.system("clear")
+    line = "*" * (len(title))
+    print(line)
     print(title)
+    print(line)
+    print()
+
 
 def return_to_menu():
     input("\nPress any key to return to the main menu: ")
     main()   
 
+
 def main():
     display_menu()
     select_option()
+  
   
 if __name__ == "__main__":
     main()
