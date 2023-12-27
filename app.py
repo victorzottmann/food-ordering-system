@@ -14,7 +14,7 @@ restaurants = [
     {
         "name": "The Canteen",
         "category": "Mediterranean",
-        "active": True
+        "active": False
     }
 ]
 
@@ -28,7 +28,7 @@ def display_menu():
     """)
     
     print("1. Register restaurant")
-    print("2. List restaurant")
+    print("2. List all restaurants")
     print("3. Activate restaurant")
     print("4. Exit\n")
   
@@ -46,7 +46,7 @@ def select_option():
                 list_restaurants()
                 break
             case 3:
-                # activate_restaurant()
+                toggle_active_restaurant()
                 break
             case 4:
                 exit_program()
@@ -70,10 +70,29 @@ def list_restaurants():
     for restaurant in restaurants:
         name = restaurant["name"]
         category = restaurant["category"]
-        active = restaurant["active"]
+        active = "activated" if restaurant["active"] else "deactivated"
         print(f"- {name} | {category} | {active}", sep="\n") 
     return_to_menu()       
 
+def toggle_active_restaurant():
+    show_option_title("Activate / Deactivate Restaurant\n")
+    name_restaurant = input("Enter the name of the restaurant: ")
+    found = False
+    for restaurant in restaurants:
+        if name_restaurant == restaurant["name"]:
+            found = True
+            restaurant["active"] = not restaurant["active"]
+            if restaurant["active"] == True:
+                message = f"Activated"
+            else:
+                message = f"Deactivated"
+            print(message)
+            return_to_menu()
+    if not found:
+        print("Restaurant not found")
+        return_to_menu()
+    
+    
 def show_option_title(title):
     os.system("clear")
     print(title)
