@@ -55,7 +55,13 @@ def select_option():
 def register_restaurant():
     show_option_title("Register a new restaurant\n")
     name = input("Enter a name for the restaurant: ")
-    restaurants.append(name)
+    category = input("Enter the category of the restaurant: ")
+    data = {
+        "name": name,
+        "category": category,
+        "active": False
+    }
+    restaurants.append(data)
     print(f"Restaurant successfully registered!\n")
     return_to_menu()
   
