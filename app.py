@@ -1,8 +1,9 @@
 from models.restaurant import Restaurant
 
 r_pizza = Restaurant("pizza", "italian")
-r_sushi = Restaurant("sushi", "japanese")
-r_sushi.toggle_active()
+r_pizza.rate("Victor", 8)
+r_pizza.rate("Claude", 7.5)
+r_pizza.rate("Chico", 10)
 
 def main():
   Restaurant.list_restaurants()

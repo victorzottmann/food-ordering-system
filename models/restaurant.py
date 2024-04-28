@@ -1,3 +1,5 @@
+from models.rating import Rating
+
 class Restaurant:
   restaurants = []
   
@@ -5,6 +7,7 @@ class Restaurant:
     self._name = name.capitalize()
     self._category = category.capitalize()
     self._active = active
+    self._ratings = []
     Restaurant.restaurants.append(self)
   
   def __str__(self) -> str:
@@ -12,7 +15,11 @@ class Restaurant:
   
   def toggle_active(self):
     self._active = not self._active
-  
+    
+  def rate(self, client, score):
+    grade = Rating(client, score)
+    self._ratings.append(grade)
+    
   @classmethod
   def list_restaurants(cls) -> None:
     print(f"{'Name'.ljust(25)} | {'Category'.ljust(25)} | Status")
