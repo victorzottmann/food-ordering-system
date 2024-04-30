@@ -17,8 +17,9 @@ class Restaurant:
     self._active = not self._active
     
   def rate(self, client, score):
-    rating = Rating(client, score)
-    self._ratings.append(rating)
+    if 0 < score <= 5:
+      rating = Rating(client, score)
+      self._ratings.append(rating)
     
   @classmethod
   def list_restaurants(cls) -> None:
@@ -33,7 +34,7 @@ class Restaurant:
   @property
   def get_average_rating(self) -> float:
     if not self._ratings:
-      return 0
+      return '-'
     # This is a list comprehension that outputs all the ratings in self._ratings (list), then sum them up
     ratings_sum = sum(rating._score for rating in self._ratings) 
     total_ratings = len(self._ratings)
