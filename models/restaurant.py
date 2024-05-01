@@ -35,7 +35,7 @@ class Restaurant:
     def get_average_rating(self) -> float:
         if not self._ratings:
             return '-'
-        # This is a list comprehension that outputs all the ratings in self._ratings (list), then sum them up
+        # This is a list comprehension that outputs all the ratings in self._ratings (list), then sums them up
         ratings_sum = sum(rating._score for rating in self._ratings) 
         total_ratings = len(self._ratings)
         avg = round(ratings_sum / total_ratings, 1)
