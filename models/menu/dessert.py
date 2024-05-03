@@ -1,6 +1,6 @@
 from models.menu.menu_item import MenuItem
 
-class Desert(MenuItem):
+class Dessert(MenuItem):
     def __init__(self, name, price, description, category, size) -> None:
         super().__init__(name, price)
         self.description = description
